@@ -1,3 +1,5 @@
+using System;
+using MyProject;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,6 +12,30 @@ namespace MyProjectTest
         public Example1(ITestOutputHelper output)
         {
             _output = output;
+        }
+
+        [Fact]
+        public void UsuarioEMaiorDeIdade()
+        {
+            // Arrange
+            var user = new User("José", 50);
+            bool expected = true;
+            // Act
+            bool result = user.MaiorDeIdade();
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void UsuarioEMenorDeIdade()
+        {
+            // Arrange
+            var user = new User("João", 17);
+            bool expected = false;
+            // Act
+            bool result = user.MaiorDeIdade();
+            // Assert
+            Assert.Equal(expected, result);
         }
 
         [Fact]
@@ -27,7 +53,7 @@ namespace MyProjectTest
             Assert.Equal(expected, result);
         }
 
-        [Theory(DisplayName = "Theories")]
+        [Theory(DisplayName = "Sums theories")]
         [Trait("Category", "Sums")]
         [InlineData(1, 1, 2)]
         [InlineData(14, 78, 92)]
@@ -46,7 +72,9 @@ namespace MyProjectTest
         [Fact(DisplayName = "DivisionByZero not implemented", Skip = "Not implemented")]
         public void DivisionByZero()
         {
-            // TODO: Needs to be implemented
+            // TODO: Needs to be implemented or
+            // HACK: Needs to be implemented or
+            // UNDONE: Needs to be implemented
         }
     }
 }
